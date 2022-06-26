@@ -22,17 +22,13 @@ template.innerHTML = `
             color: hsl(var(--clr-light))
             background-color: hsl(var(--clr-900));
         }
-        
+
         tr:first-child {
             background-color:  hsl(var(--clr-dark));
         }
     </style>
     
     <table>
-        <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-        </tr>
     </table>
 `;
 
@@ -46,12 +42,23 @@ class Table extends HTMLElement {
   fillTable() {
     var content = JSON.parse(this.getAttribute("data"));
     const table = this.querySelector("table");
-    content.map((item) => {
+
+    const tableHeader = document.createElement("tr");
+    content.headers.map((item) => {
+      const newTH = document.createElement("th");
+      newTH.innerHTML = item;
+      tableHeader.appendChild(newTH);
+    });
+    table.appendChild(tableHeader);
+
+    content.payload.map((item) => {
       const tableRow = document.createElement("tr");
-      tableRow.innerHTML = `
-            <td>${item.firstName}</td>
-            <td>${item.lastName}</td>
-        `;
+      var innerRow = "";
+      for (const [key, value] of Object.entries(item)) {
+        innerRow += `<td>${value}</td>`;
+      }
+
+      tableRow.innerHTML = innerRow;
       table.appendChild(tableRow);
     });
   }
