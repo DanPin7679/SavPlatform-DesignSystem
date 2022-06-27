@@ -42,6 +42,7 @@ class Table extends HTMLElement {
         { col1: "Item 2 Col 1", col2: "Item 2 Col 2" },
       ],
     };
+    this.fillTable();
   }
 
   get data() {
