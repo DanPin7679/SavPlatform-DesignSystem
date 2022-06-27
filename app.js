@@ -30,6 +30,11 @@ const navInner = `
         ><span>03</span>Table</a
         >
     </li>
+    <li>
+        <a class="uppercase text-white letter-spacing-2" href="./tabs.html"
+        ><span>03</span>Tabs</a
+        >
+    </li>
 `;
 
 const allNav = document.querySelectorAll("ul");

@@ -18,6 +18,7 @@
       </div>
       <div>
         <cthink-table
+          id="myTable"
           data='{
           "headers": ["First Name", "Last Name"],
           "payload": [
@@ -30,5 +31,19 @@
         </cthink-table>
       </div>
     </div>
+    <script>
+      window.onload = function () {
+        const myTable = document.getElementById("myTable");
+        myTable.data = {
+          columnsTitle: ["Column 1", "Column 2"],
+          payload: [
+            { col1: "Item 1 Col 1", col2: "Item 1 Col 2" },
+            { col1: "Item 2 Col 1", col2: "Item 2 Col 2" },
+            { col1: "Item 3 Col 1", col2: "Item 3 Col 2" },
+            { col1: "Item 4 Col 1", col2: "Item 4 Col 2" },
+          ],
+        };
+      };
+    </script>
   </body>
 </html>

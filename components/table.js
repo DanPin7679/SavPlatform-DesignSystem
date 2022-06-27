@@ -33,6 +33,26 @@ template.innerHTML = `
 `;
 
 class Table extends HTMLElement {
+  constructor() {
+    super();
+    this._data = {
+      columnsTitle: ["Column 1", "Column 2"],
+      payload: [
+        { col1: "Item 1 Col 1", col2: "Item 1 Col 2" },
+        { col1: "Item 2 Col 1", col2: "Item 2 Col 2" },
+      ],
+    };
+  }
+
+  get data() {
+    return this._data;
+  }
+
+  set data(newData) {
+    this._data = newData;
+    this.fillTable();
+  }
+
   connectedCallback() {
     const templateContent = document.importNode(template.content, true);
     this.appendChild(templateContent);
@@ -40,18 +60,18 @@ class Table extends HTMLElement {
   }
 
   fillTable() {
-    var content = JSON.parse(this.getAttribute("data"));
     const table = this.querySelector("table");
+    removeAllChildNodes(table);
 
     const tableHeader = document.createElement("tr");
-    content.headers.map((item) => {
+    this._data.columnsTitle.map((item) => {
       const newTH = document.createElement("th");
       newTH.innerHTML = item;
       tableHeader.appendChild(newTH);
     });
     table.appendChild(tableHeader);
 
-    content.payload.map((item) => {
+    this._data.payload.map((item) => {
       const tableRow = document.createElement("tr");
       var innerRow = "";
       for (const [key, value] of Object.entries(item)) {
@@ -65,5 +85,11 @@ class Table extends HTMLElement {
 }
 
 customElements.define("cthink-table", Table);
+
+function removeAllChildNodes(parent) {
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
+}
 
 export { Table };
