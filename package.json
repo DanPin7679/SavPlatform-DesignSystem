@@ -1,0 +1,19 @@
+{
+  "name": "cthink-dsys",
+  "version": "1.0.0",
+  "description": "cthink Design System",
+  "main": "components/components.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanPin7679/SavPlatform-DesignSystem.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DanPin7679/SavPlatform-DesignSystem/issues"
+  },
+  "homepage": "https://github.com/DanPin7679/SavPlatform-DesignSystem#readme"
+}
