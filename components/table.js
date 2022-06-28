@@ -32,7 +32,7 @@ template.innerHTML = `
     </table>
 `;
 
-class Table extends HTMLElement {
+export default class Table extends HTMLElement {
   constructor() {
     super();
     this._data = {
